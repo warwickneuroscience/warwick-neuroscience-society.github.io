@@ -238,47 +238,5 @@
   </div>
 </footer>
 
-<script>
-  document.getElementById("sendMessageBtn").addEventListener("click", function() {
-    event.preventDefault(); 
-
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let message = document.getElementById("message").value.trim();
-
-    // Email validation regex
-    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (name === "" || email === "" || message === "") {
-        alert("All fields are required!");
-        return;
-    }
-
-    if (!email.match(emailPattern)) {
-        alert("Please enter a valid email address!");
-        return;
-    }
-
-    // Format email body
-    let subject = encodeURIComponent("New Inquiry from " + name);
-    let body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-
-    // Open mail client
-    window.location.href = `mailto:warwickneurosciencesociety@gmail.com?subject=${subject}&body=${body}`;
-
-    // Create a temporary anchor element and trigger click
-    let tempLink = document.createElement("a");
-    tempLink.href = mailtoLink;
-    tempLink.style.display = "none";
-    document.body.appendChild(tempLink);
-    tempLink.click();
-    document.body.removeChild(tempLink);
-});
-
-</script>
-
-
 </body>
 </html>
